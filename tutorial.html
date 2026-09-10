@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MC-CATCHER - Linux Installation</title>
+
+```
+<style>
+    body {
+        background: #000;
+        color: #00ff66;
+        font-family: Arial, sans-serif;
+        max-width: 900px;
+        margin: auto;
+        padding: 40px 20px;
+        line-height: 1.6;
+    }
+
+    h1, h2 {
+        color: #00ff66;
+    }
+
+    h1 {
+        font-size: 42px;
+    }
+
+    h2 {
+        margin-top: 40px;
+        border-bottom: 1px solid #00ff66;
+        padding-bottom: 5px;
+    }
+
+    code {
+        background: #111;
+        color: #66ff99;
+        padding: 3px 6px;
+        border-radius: 4px;
+    }
+
+    pre {
+        background: #111;
+        color: #66ff99;
+        padding: 15px;
+        border-radius: 8px;
+        overflow-x: auto;
+        border: 1px solid #063;
+    }
+
+    .warning {
+        border: 1px solid #ffcc00;
+        color: #ffcc00;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 20px 0;
+    }
+
+    .note {
+        border: 1px solid #00ff66;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 20px 0;
+    }
+
+    a {
+        color: #66ff99;
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+<h1>MC-CATCHER</h1>
+
+<p>
+    <strong>Linux Installation Guide</strong>
+</p>
+
+<p>
+    MC-CATCHER is a Minecraft Java Edition server monitoring tool.
+    It can monitor a server, detect publicly available player names,
+    record player counts, detect joins and leaves, and save everything
+    to a CSV log.
+</p>
+
+<h2>1. Download MC-CATCHER</h2>
+
+<p>
+    Download the <strong>MC-CATCHER Python script (.py)</strong>
+    from the official MC-CATCHER website:
+</p>
+
+<p>
+    <a href="https://twobbular.github.io/MC-CATCHER/">
+        MC-CATCHER Website
+    </a>
+</p>
+
+<p>
+    You only need the <code>.py</code> file. You do not need to download
+    the entire website.
+</p>
+
+<h2>2. Put the Script Somewhere</h2>
+
+<p>
+    Move the downloaded <code>.py</code> file somewhere convenient,
+    such as your Home folder or a folder specifically for MC-CATCHER.
+</p>
+
+<p>For example:</p>
+
+<pre>
+/home/yourusername/MC-CATCHER/minecraft_watcher.py
+</pre>
+
+<h2>3. Open the Script</h2>
+
+<p>
+    Open the <code>.py</code> file using a text editor such as
+    <strong>Text Editor</strong>, <strong>Gedit</strong>, or another
+    plain-text code editor.
+</p>
+
+<p>
+    Find these settings near the top of the script:
+</p>
+
+<pre>
+SERVER = "nogermans.aternos.me"
+LOG_FILE = "/home/twobbular/minecraft_player_log.csv"
+</pre>
+
+<h2>4. Enter Your Minecraft Server</h2>
+
+<p>
+    Change the value of <code>SERVER</code> to the address of the
+    Minecraft Java Edition server you want to monitor.
+</p>
+
+<p>For example:</p>
+
+<pre>
+SERVER = "play.example.com"
+</pre>
+
+<p>
+    Do not include <code>https://</code>.
+</p>
+
+<h2>5. Choose Where the CSV Is Saved</h2>
+
+<p>
+    Change <code>LOG_FILE</code> to the location where you want
+    MC-CATCHER to save its CSV log.
+</p>
+
+<p>For example:</p>
+
+<pre>
+LOG_FILE = "/home/yourusername/Documents/minecraft_log.csv"
+</pre>
+
+<p>
+    You can choose any location where you have permission to create
+    files.
+</p>
+
+<div class="note">
+    <strong>Tip:</strong> Make sure the folder already exists.
+    MC-CATCHER can create the CSV file, but it will not automatically
+    create missing folders.
+</div>
+
+<h2>6. Install Python</h2>
+
+<p>
+    Open Terminal and run:
+</p>
+
+<pre>
+sudo apt update
+sudo apt install python3 python3-venv
+</pre>
+
+<h2>7. Create a Virtual Environment</h2>
+
+<p>
+    Open Terminal in the folder containing MC-CATCHER and run:
+</p>
+
+<pre>
+python3 -m venv venv
+</pre>
+
+<p>
+    Then activate it:
+</p>
+
+<pre>
+source venv/bin/activate
+</pre>
+
+<p>
+    Your Terminal should now show <code>(venv)</code> somewhere at the
+    beginning of the command prompt.
+</p>
+
+<h2>8. Install MCStatus</h2>
+
+<p>
+    MC-CATCHER uses the <code>mcstatus</code> Python package to query
+    Minecraft Java Edition servers.
+</p>
+
+<pre>
+pip install mcstatus
+</pre>
+
+<h2>9. Run MC-CATCHER</h2>
+
+<p>
+    Run the Python script:
+</p>
+
+<pre>
+python minecraft_watcher.py
+</pre>
+
+<p>
+    MC-CATCHER will now begin monitoring your server.
+</p>
+
+<h2>10. The Server Can Be Offline</h2>
+
+<p>
+    MC-CATCHER does <strong>not</strong> need the Minecraft server to be
+    online when you start it.
+</p>
+
+<p>
+    If the server is offline, MC-CATCHER will keep checking it:
+</p>
+
+<pre>
+[12:30:00] 🔴 Server unavailable — still waiting...
+[12:30:15] 🔴 Server unavailable — still waiting...
+[12:30:30] 🔴 Server unavailable — still waiting...
+</pre>
+
+<p>
+    When the server becomes available, MC-CATCHER will automatically
+    detect it:
+</p>
+
+<pre>
+[12:31:00] 🟢 SERVER ONLINE
+[12:31:00] Initial player list: Steve
+[12:31:00] Online (1): Steve
+</pre>
+
+<h2>11. Viewing the CSV</h2>
+
+<p>
+    Open the location you selected for <code>LOG_FILE</code>.
+    MC-CATCHER will create a file ending in <code>.csv</code>.
+</p>
+
+<p>
+    You can open the CSV with applications such as:
+</p>
+
+<ul>
+    <li>LibreOffice Calc</li>
+    <li>Microsoft Excel</li>
+    <li>Google Sheets</li>
+    <li>Any other spreadsheet application</li>
+</ul>
+
+<p>
+    MC-CATCHER saves its log after every check, so the CSV is continuously
+    updated while the program is running.
+</p>
+
+<h2>12. Stopping MC-CATCHER</h2>
+
+<p>
+    To stop MC-CATCHER, press:
+</p>
+
+<pre>
+Ctrl + C
+</pre>
+
+<p>
+    If you activated the virtual environment, you can leave it with:
+</p>
+
+<pre>
+deactivate
+</pre>
+
+<h2>Troubleshooting</h2>
+
+<h3>Python is not installed</h3>
+
+<pre>
+sudo apt update
+sudo apt install python3 python3-venv
+</pre>
+
+<h3>mcstatus is missing</h3>
+
+<p>
+    Make sure the virtual environment is activated:
+</p>
+
+<pre>
+source venv/bin/activate
+</pre>
+
+<p>
+    Then install mcstatus:
+</p>
+
+<pre>
+pip install mcstatus
+</pre>
+
+<h3>The server is offline</h3>
+
+<p>
+    This is normal. MC-CATCHER will continue checking until the server
+    becomes available.
+</p>
+
+<h3>The CSV is not being created</h3>
+
+<p>
+    Check that the folder specified by <code>LOG_FILE</code> already
+    exists and that your user account has permission to write there.
+</p>
+
+<div class="warning">
+    <strong>Important:</strong> MC-CATCHER uses publicly available
+    Minecraft server status information. Player-name detection may not
+    always provide a complete list of players. MC-CATCHER should not be
+    treated as a replacement for server-side logs or administrator tools.
+</div>
+
+<h2>License / Usage</h2>
+
+<p>
+    MC-CATCHER is open-source, and its source code may be modified and
+    redistributed. However, MC-CATCHER and its source code may not be
+    used for commercial purposes or malicious intent.
+</p>
+
+<p>
+    Made by <strong>Twobbular</strong>.
+</p>
+
+</body>
+</html>
