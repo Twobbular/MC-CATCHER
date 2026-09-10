@@ -4,11 +4,11 @@ from datetime import datetime
 from mcstatus import JavaServer
 # enter your desired server ip
 # in the interval, that 15 is 15 seconds, make it shorter or longer if you want
-
+# you can rename the log file, but keep it .csv
 SERVER = ""
 INTERVAL = 15
 EMPTY_LIMIT = 5
-LOG_FILE = "/home/twobbular/minecraft_player_log.csv"
+LOG_FILE = "where/you/want/it/to/go/minecraft_player_log.csv"
 
 previous_players = set()
 first_check = True
