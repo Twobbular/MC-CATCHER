@@ -1,4 +1,4 @@
-const audio = new Audio('https://twobplay.pages.dev/bgm.mp3');
+const audio = new Audio('bgm.mp3');
 
 audio.loop = true;
   
