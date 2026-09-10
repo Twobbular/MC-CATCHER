@@ -1,7 +1,6 @@
-
 body {
-  background: white;
-  color: black;
+  background: black;
+  color: green;
   font-family: 'Orbitron', sans-serif;
   text-align: center;
   padding: 2rem;
@@ -10,15 +9,15 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-size: 3rem;
   font-weight: bold;
-  background: linear-gradient(270deg, red, orange, yellow, green, blue, indigo, violet);
+  background: linear-gradient(270deg, #90ee90, #32cd32, #006400, #32cd32, #90ee90);
   background-size: 400% 400%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: rainbowFlow 5s linear infinite, spin 8s linear infinite;
+  animation: greenFlow 5s linear infinite, spin 8s linear infinite;
   display: inline-block;
 }
 
-@keyframes rainbowFlow {
+@keyframes greenFlow {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
@@ -30,7 +29,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .animated-image {
-  width: 300px; /* final size */
+  width: 300px;
   transform-origin: center;
   animation: zoomSpin 3s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
 }
